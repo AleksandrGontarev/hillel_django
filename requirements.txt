@@ -5,6 +5,7 @@ backports.zoneinfo==0.2.1
 decorator==5.1.1
 Django==4.0.5
 executing==0.8.3
+Faker==13.15.0
 flake8==3.9.2
 flake8-builtins==1.5.3
 flake8-django==1.1.2
@@ -23,6 +24,7 @@ pure-eval==0.2.2
 pycodestyle==2.7.0
 pyflakes==2.3.1
 Pygments==2.12.0
+python-dateutil==2.8.2
 shell==1.0.1
 six==1.16.0
 sqlparse==0.4.2
