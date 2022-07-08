@@ -10,8 +10,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        if User.objects.get(is_superuser=True).id in options["user_id"]:
-            superuser_id = User.objects.get(is_superuser=1).id
-            raise CommandError(f"superuser with id({superuser_id}) in the list, deletion is not possible")
+        if User.objects.filter(is_superuser=True, pk__in=options["user_id"]):
+            superuser_id = User.objects.filter(is_superuser=True, pk__in=options["user_id"])
+            raise CommandError(f"superuser with id{[i.pk for i in superuser_id]} in the list, deletion is not possible")
         delete_user = User.objects.filter(pk__in=options["user_id"]).delete()
-        self.stdout.write("Delete %s" % delete_user)
+        self.stdout.write("Delete %s" % str(delete_user))

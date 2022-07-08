@@ -22,3 +22,4 @@ class Command(BaseCommand):
                 password=make_password(fake.word() + fake.word()))
             )
         User.objects.bulk_create(users)
+        self.stdout.write("New users created %s" % users)
