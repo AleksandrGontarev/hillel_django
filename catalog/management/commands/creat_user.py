@@ -1,11 +1,12 @@
+from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand
+
 from faker import Faker
-from django.contrib.auth.hashers import make_password
 
 
 class Command(BaseCommand):
-    help = "Create random new users"
+    _help = "Create random new users"
 
     def add_arguments(self, parser):
         parser.add_argument("user_id", nargs=1, type=int, choices=range(1, 11),
@@ -21,4 +22,3 @@ class Command(BaseCommand):
                 password=make_password(fake.word() + fake.word()))
             )
         User.objects.bulk_create(users)
-

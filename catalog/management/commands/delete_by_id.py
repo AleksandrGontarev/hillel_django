@@ -3,7 +3,7 @@ from django.core.management.base import BaseCommand, CommandError
 
 
 class Command(BaseCommand):
-    help = "Delete users by id"
+    _help = "Delete users by id"
 
     def add_arguments(self, parser):
         parser.add_argument("user_id", nargs="+", type=int, help="enter user id to delete ")
@@ -15,5 +15,3 @@ class Command(BaseCommand):
             raise CommandError(f"superuser with id({superuser_id}) in the list, deletion is not possible")
         delete_user = User.objects.filter(pk__in=options["user_id"]).delete()
         self.stdout.write("Delete %s" % delete_user)
-
-
