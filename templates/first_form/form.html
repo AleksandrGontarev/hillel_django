@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FirstForm</title>
+</head>
+<body>
+<p>hypotenuse =
+    {% if hypotenuse != None%}
+        {{ hypotenuse }}
+    {% endif %}
+</p>
+<form action="{% url 'firstform:index' %}" method="get">
+    {{ triangle_form.as_p }}
+    <input type="submit" name="submit" value="OK">
+</form>
+</body>
+</html>
