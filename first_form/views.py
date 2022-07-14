@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .forma import TriangleForm
+from .forms import TriangleForm
 
 
 def index(request):

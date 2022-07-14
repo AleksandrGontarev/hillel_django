@@ -5,9 +5,9 @@
     <title>FirstForm</title>
 </head>
 <body>
-<p>hypotenuse =
+<p>
     {% if hypotenuse != None%}
-        {{ hypotenuse }}
+        hypotenuse = {{ hypotenuse }}
     {% endif %}
 </p>
 <form action="{% url 'firstform:index' %}" method="get">
