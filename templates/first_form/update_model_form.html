@@ -5,6 +5,7 @@
     <title>Update form</title>
 </head>
 <body>
+<h2>Update form</h2>
 <form action="{% url 'firstform:person-update-form' pk=obj.pk %}" method="post">
     {% csrf_token %}
     {{ person_form.as_p }}

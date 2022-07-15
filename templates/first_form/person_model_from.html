@@ -5,6 +5,7 @@
     <title>Create form</title>
 </head>
 <body>
+<h2>Create form</h2>
 <form action="{% url 'firstform:person-form' %}" method="post">
     {% csrf_token %}
     {{ person_form.as_p }}
