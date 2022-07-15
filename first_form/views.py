@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 
-from .forms import TriangleForm
+from .forms import TriangleForm, PersonModelForm
+
+from first_form.models import Person
 
 
 def index(request):
@@ -20,3 +22,39 @@ def index(request):
         {"triangle_form": triangle_form,
          "hypotenuse": hypotenuse},
     )
+
+
+def model_form(request):
+    if request.method == 'POST':
+        person_form = PersonModelForm(data=request.POST)
+        if person_form.is_valid():
+            person_form.save()
+            return redirect('firstform:person-form')
+    else:
+        person_form = PersonModelForm()
+    return render(request,
+                  "first_form/person_model_from.html",
+                  {
+                      'person_form': person_form,
+                  }
+                  )
+
+
+def model_update_form(request, pk):
+    obj = get_object_or_404(Person, pk=pk)
+    if request.method == 'POST':
+        person_form = PersonModelForm(data=request.POST, instance=obj)
+        if person_form.is_valid():
+            person_form.save()
+            return redirect('firstform:person-form')
+    else:
+        person_form = PersonModelForm(instance=obj)
+    return render(request,
+                  "first_form/update_model_form.html",
+                  {
+                      'person_form': person_form,
+                      'obj': obj,
+                  }
+                  )
+
+
