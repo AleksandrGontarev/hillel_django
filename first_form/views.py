@@ -46,7 +46,7 @@ def model_update_form(request, pk):
         person_form = PersonModelForm(data=request.POST, instance=obj)
         if person_form.is_valid():
             person_form.save()
-            return redirect('firstform:person-form')
+            return redirect('firstform:person-update-form')
     else:
         person_form = PersonModelForm(instance=obj)
     return render(request,
