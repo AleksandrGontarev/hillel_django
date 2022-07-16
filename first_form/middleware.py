@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from django.utils.deprecation import MiddlewareMixin
 
 from first_form.models import Log
@@ -18,5 +16,4 @@ class LogMiddleware(MiddlewareMixin):
         if not request.path.startswith('/admin'):
             path = request.path
             method = request.method
-            timestamp = datetime.now()
-            Log.objects.create(path=path, method=method, timestamp=timestamp)
+            Log.objects.create(path=path, method=method)

@@ -13,7 +13,7 @@ class Person(models.Model):
 class Log(models.Model):
     path = models.CharField(max_length=50)
     method = models.CharField(max_length=10)
-    timestamp = models.DateTimeField()
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.path
