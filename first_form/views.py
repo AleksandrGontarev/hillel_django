@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect, get_object_or_404
-
-from .forms import TriangleForm, PersonModelForm
+from django.shortcuts import get_object_or_404, redirect, render
 
 from first_form.models import Person
+
+from .forms import PersonModelForm, TriangleForm
 
 
 def index(request):
@@ -56,5 +56,3 @@ def model_update_form(request, pk):
                       'obj': obj,
                   }
                   )
-
-
